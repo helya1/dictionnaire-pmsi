@@ -5,6 +5,7 @@ format:
     toc: true
     toc-depth: 2
     theme: cosmo
+    self-contained: true
 execute: 
   echo: false
   warning: false
