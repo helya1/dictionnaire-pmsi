@@ -1,0 +1,120 @@
+---
+title: "Dictionnaire des variables - PMSI"
+format: 
+  html:
+    toc: true
+    toc-depth: 2
+    theme: cosmo
+execute: 
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+library(tibble)
+library(dplyr)
+library(knitr)
+library(kableExtra)
+
+## Dictionnaire des variables
+
+### 🔵 PMSI MCO
+
+library(tibble)
+library(dplyr)
+library(kableExtra)
+
+dico_mco <- tibble(
+  variable = c(
+    "age", "date_entree", "date_sortie", "diag",
+    "dp", "dr", "ident", "ident1", "modeSortie", "typ_diag"
+  ),
+  
+  nom_complet = c(
+    "Âge du patient",
+    "Date d'entrée du séjour",
+    "Date de sortie du séjour",
+    "Code diagnostic CIM-10",
+    "Diagnostic principal",
+    "Diagnostic relié",
+    "Identifiant de séjour",
+    "Identifiant patient",
+    "Mode de sortie",
+    "Type de diagnostic"
+  ),
+  
+  description = c(
+    "Âge en années au moment du séjour.",
+    "Date d’admission du patient.",
+    "Date de sortie du séjour.",
+    "Code CIM-10 (X60–X84 pour GAI).",
+    "Motif principal d’hospitalisation.",
+    "Diagnostic complémentaire.",
+    "Clé de jointure du séjour.",
+    "Identifiant anonyme du patient.",
+    "Situation à la sortie.",
+    "Type du diagnostic (DP, DR, DAS)."
+  ),
+  
+  table = "mcoxxbd"
+) %>%
+  arrange(variable)
+
+dico_mco %>%
+  kable(caption = "Variables PMSI MCO") %>%
+  kable_styling(full_width = FALSE) %>%
+  row_spec(0, background = "#3498db", color = "white")
+```
+
+```{r}
+dico_psy <- tibble(
+  variable = c(
+    "age", "annee", "dep_cogn", "dep_phys", "destination",
+    "ident", "ident_sej", "isother", "modeentree",
+    "modesortie", "nbda", "nbjseq", "provenance", "sexe"
+  ),
+  
+  nom_complet = c(
+    "Âge du patient",
+    "Année de fin de séquence",
+    "Dépendance cognitive",
+    "Dépendance physique",
+    "Destination",
+    "Identifiant de séquence",
+    "Identifiant de séjour",
+    "Jours d’isolement thérapeutique",
+    "Mode d’entrée",
+    "Mode de sortie",
+    "Nombre de diagnostics associés",
+    "Nombre de jours de présence",
+    "Provenance",
+    "Sexe du patient"
+  ),
+  
+  description = c(
+    "Âge à l’entrée de la séquence.",
+    "Année de fin de séquence.",
+    "Score de dépendance cognitive.",
+    "Score de dépendance physique.",
+    "Destination après sortie.",
+    "Identifiant unique de séquence.",
+    "Identifiant du séjour.",
+    "Nombre de jours d’isolement thérapeutique.",
+    "Mode d’entrée du patient.",
+    "Mode de sortie du patient.",
+    "Nombre de diagnostics associés.",
+    "Durée de séjour en jours.",
+    "Origine du patient.",
+    "Sexe du patient."
+  ),
+  
+  table = "psyxxbd"
+) %>%
+  arrange(variable)
+
+dico_psy %>%
+  kable(caption = "Variables PMSI PSY") %>%
+  kable_styling(full_width = FALSE) %>%
+  row_spec(0, background = "#9b59b6", color = "white")
+```
